@@ -1,7 +1,62 @@
-<header>
-    <title> test </title>
-</header>
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boli mnie</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
 <body>
-<h1> test </h1>
+  <header>Boli mnie – interaktywny przewodnik po zdrowiu</header>
 
+  <div class="viewer-section">
+    <model-viewer id="humanModel" src="models/male_skin.glb" alt="Model człowieka" auto-rotate camera-controls interaction-prompt="none"></model-viewer>
+
+    <div class="buttons">
+      <button onclick="changeModel('male')">Model mężczyzny</button>
+      <button onclick="changeModel('female')">Model kobiety</button>
+      <button onclick="nextLayer()">Następna warstwa</button>
+    </div>
+  </div>
+
+  <div class="info-panel" id="infoPanel">
+    <h2>Wybierz organ</h2>
+    <p>Kliknij na część ciała, aby uzyskać więcej informacji.</p>
+  </div>
+
+  <!-- Sekcja znajdź lekarza -->
+  <div class="info-panel">
+    <h2>Znajdź lekarza</h2>
+    <input type="text" placeholder="Wpisz lokalizację" id="locationInput">
+    <button onclick="searchDoctor()">Szukaj</button>
+    <div id="doctorResults"></div>
+  </div>
+
+  <script>
+    let currentLayer = 0;
+    const models = {
+      male: ["models/male_skin.glb", "models/male_skeleton.glb", "models/male_organs.glb"],
+      female: ["models/female_skin.glb", "models/female_skeleton.glb", "models/female_organs.glb"]
+    };
+    let gender = 'male';
+
+    function changeModel(selected) {
+      gender = selected;
+      currentLayer = 0;
+      document.getElementById('humanModel').src = models[gender][currentLayer];
+    }
+
+    function nextLayer() {
+      currentLayer = (currentLayer + 1) % 3;
+      document.getElementById('humanModel').src = models[gender][currentLayer];
+    }
+
+    function searchDoctor() {
+      const location = document.getElementById('locationInput').value;
+      const result = `Szukam lekarzy w: ${location}. (Integracja z API map w przyszłości)`;
+      document.getElementById('doctorResults').innerText = result;
+    }
+  </script>
 </body>
+</html>

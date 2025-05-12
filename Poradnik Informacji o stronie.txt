@@ -1,0 +1,15 @@
+W Visual Studio Code, masz TERMINAL, jest to konsola
+w której wykonujesz diałania Git.
+
+Git jest plikiem potrzebnym do użytku kodu "git (...)".
+
+Na górze masz pasek plików, jeżeli zmienisz coś
+to pojawi się kropka biała.
+
+Jeżeli tekst pliku jest pomarańczowy z "M", to
+oznacza że plik został zapisany ale nie jest aktualny
+do opublikowanej wersji.
+
+Aby opublikować stronę na githubie
+musisz wykonać kilka kroków w TERMINAL.
+
