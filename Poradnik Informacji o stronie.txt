@@ -13,3 +13,11 @@ do opublikowanej wersji.
 Aby opublikować stronę na githubie
 musisz wykonać kilka kroków w TERMINAL.
 
+git add .
+kropka oznacza aby dodać do git wszystkie pliki w tym folderze
+
+git commit -m "informacja aktualizacji"
+zapisuje zmiany dopisane na githubie z informacją krótką o zmianie wykonanej
+
+git push -u origin main
+opublikowanie strony
